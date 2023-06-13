@@ -1,6 +1,12 @@
 @charset "UTF-8";
 
 /*========= レイアウトのためのCSS ===============*/
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -29,11 +35,14 @@ p {
   word-wrap: break-word;
 }
 
-/*----ヘッダー-----------------------*/
+/*---------------------------------
+ヘッダー
+----------------------------------*/
 
 .Ls-top__header {
-  max-width: 1300px;
   width:100%;
+  max-width: 1300px;
+
 }
 
 .Ls-top__header__inner{
@@ -239,7 +248,7 @@ Ls-test04-sec02 パンくず
 .Ls-test04-sec02{
 	width: 100%;
 	max-width: 1200px;
-
+  margin:0 auto;
 	/* display: inline-block; */
 }
 
@@ -256,20 +265,20 @@ Ls-test04-sec02 パンくず
 
 .Ls-text01-sec02__breadcrumb{
   margin: 0;
-    padding: 0;
-    list-style: none;
+  padding: 0;
+  list-style: none;
 }
 
 .Ls-test01-sec02__itemListElement{
   display: inline;
-    list-style: none;
-    font-weight: bold;
+  list-style: none;
+  font-weight: bold;
 }
 
 .Ls-test01-sec02__itemListElement li{
   display: inline;
-    list-style: none;
-    font-weight: bold;
+  list-style: none;
+  font-weight: bold;
 }
 
 /*----------------------------------
@@ -281,6 +290,7 @@ Ls-test04-section03
   max-width: 1300px;
   /* background-color: #fff; */
   text-align:center;
+  margin:0 auto;
 }
 
 .Ls-test04-section03__inner{
@@ -322,11 +332,12 @@ Ls-test04-sec04 カード
 
 .Ls-test04-sec04 {
   width: 100%;
+  max-width: 1300px;
   background-color: #fff;
   text-align: center;
-  max-width: 1300px;
   align-items: center;
 	margin-bottom:60px;
+  margin:0 auto;
 }
 
 .Ls-test04-sec04__inner{
@@ -453,9 +464,9 @@ Ls-test04-sec04 カード
   width:100%;
 }
 
-/*---
+/*------------------------------------
 gallery grid
----*/
+-----------------------------------*/
 
 /*----------------------------------
 Ls-test-sec09
@@ -463,8 +474,8 @@ Ls-test-sec09
 .Ls-test-sec09{
   width:100%;
   max-width:1300px;
-
 }
+
 /*----------------------------------
 ギャラリー
 ------------------------------------*/
@@ -538,12 +549,15 @@ grid{
   width: 100%;
   height: 100%;
 }
+
 /*----------------------------------
 Ls-test-sec07
 ------------------------------------*/
+
 .Ls-test04-sec07{
   width:100%;
   max-width:1300px;
+  margin:0 auto;
 }
 
 .Ls-test04-sec07__inner{
@@ -567,10 +581,9 @@ Ls-test-sec07
   margin-bottom:60px;
 }
 
-/*--メディアクエリー（レスポンシブ)-----*/
-
-
-
+/*------------------------------------------
+メディアクエリー（レスポンシブ)
+------------------------------------------*/
 
 .Ls-test04-sec09 {
   width: 100%;
@@ -792,7 +805,12 @@ Ls-test04-sec12
 .Ls-test04-sec12 p{
   display:block;
   text-align:left;
-  padding:40px 30px 60px 30px;
+  margin:40px 30px 60px 30px;
+}
+.devdev__container{
+  max-width:1200px;
+  width:100%;
+  margin:0 auto;
 }
 
 /*----------------------------------
@@ -822,9 +840,12 @@ footer　フッター
 
 /*運営情報*/
 .footer-prof {
-  /* padding-top: 30px;
-  padding-bottom: 40px; */
+  padding-top: 30px;
+  padding-bottom: 40px;
   width:50%;
+}
+.Ls-footer__address{
+  margin:0px 20px 0px 20px;
 }
 
 .footer-prof__r{
@@ -912,7 +933,11 @@ footer　フッター
 }
 
 .footer__copyright{
+  width:100%;
+  max-width:1300px;
   display: flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
   margin:0 auto;
 }
 
@@ -920,7 +945,7 @@ footer　フッター
 ページトップ(戻るボタン)
 --------------------------*/
 
-.footer-pagetop {
+/* .footer-pagetop {
 	position: absolute;
   right: 0;
   top: -61px;
@@ -951,10 +976,10 @@ footer　フッター
   border-top: 2px solid;
   border-right: 2px solid;
   transform: translate(-50%, -25%) rotate(-45deg);
-}
+} */
 
 /*------------------------------------
-Page-top
+Page-top 8-1-2
 --------------------------------------*/
 
 #page-top a{
@@ -966,7 +991,7 @@ Page-top
   width:60px;
   height:60px;
   color:#fff;
-  text-align:center;
+  text-align:right;
   text-transform:uppercase;
   text-decoration:none;
   font-size:0.6rem;
