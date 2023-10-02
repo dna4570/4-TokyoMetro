@@ -1,12 +1,64 @@
 @charset "UTF-8";
 
+/*========= レイアウトのためのCSS ===============*/
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: #333;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  font-size: 6vw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 30px 0;
+}
+
+p {
+  margin: 0 10px 10px 10px;
+  word-wrap: break-word;
+}
+
+/*---------------------------------
+ヘッダー
+----------------------------------*/
+
 .Ls-top__header {
-  max-width: 1300px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+  width:100%;
+
+  display: inline-block;
+}
+
+.Ls-top__header__inner{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 0 auto;
-	padding: 30px 10px 30px 10px;
+  padding: 0px 20px 0px 20px;
+  margin:0 auto;
+  text-align:center;
+  max-width: 1300px;
+}
+
+.Ls-top__header img{
+  width:200px;
+  margin:0px 20px 0px 20px;
 }
 
 .far fa-envelope {
@@ -18,6 +70,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+  flex-wrap:wrap;
   list-style: none;
 }
 
@@ -31,16 +84,20 @@
 }
 
 /*----------------------------------
-ハンバーガー
+ハンバーガーメニュー
 ------------------------------------*/
 
 .openbtn1{
   position:relative;
+  /* position:fixed; */
   background:#57a2c7;
   cursor:pointer;
   width:50px;
   height:50px;
   border-radius:5px;
+  top:0px;
+  right:0px;
+  z-index:9999;
 }
 
 .openbtn1 span{
@@ -53,12 +110,15 @@
   background:#fff;
   width:45%;
 }
+
 .openbtn1 span:nth-of-type(1){
   top:15px;
 }
+
 .openbtn1 span:nth-of-type(2){
   top:23px;
 }
+
 .openbtn1 span:nth-of-type(3){
   top:31px;
 }
@@ -66,138 +126,223 @@
 .openbtn1 active span:nth-of-type(1){
   top:18px;
   left:18px;
-  transform:translateY(6px)rotate(-45deg);
+  transform:translateY(6px) rotate(-45deg);
   width:30%;
 }
+
 .openbtn1 active span:nth-of-type(2){
-  opacity:0;
+  opacity: 0;
 }
+
 .openbtn1 active span:nth-of-type(3){
   top:30px;
   left:18px;
-  transform:translateY(-6px)rotate(45deg);
+  transform:translateY(-6px) rotate(45deg);
   width:30%;
 }
 
+/*ナビウゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+  position:fixed;
+  z-index:999;
+  width:100%;
+  height:100vh;
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+#g-nav ul {
+  position:absolute;
+  z-index:999;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+/*以下は検証用レイアウトのためのCSS*/
+
+nav ul{
+  list-style:none;
+  text-align:center;
+}
+
+nav ul li a{
+  display:inline-block;
+  text-decoration:none;
+  color:#000;
+  padding:10px;
+}
+
+#g-nav{
+  position:fixed;
+  z-index:999;
+  top:0;
+  right:-120%;
+  width:100%;
+  height:100vh;
+  background:#999;
+  trandition:all 0.6s;
+}
+
+#g-nav.panelactive{
+  right:0;
+}
+
 /*----------------------------------
-Ls-test04-sec01
+swiper スライダー
 ------------------------------------*/
-.Ls-test04-sec01{
-  display: block;
-  max-width: 100vw;
-  width: 100%;
-  margin: 0 auto;
-  background-color: black;
-  text-align: center;
-  align-items: center;
-  height: 500px;
-  background-image: url("../image/classbg.jpg");
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.swiper-wrapper{
+  /* position:relative; */
+  width:100%;
+  height:300px;
+  text-align:center;
 }
-.Ls-test04-sec01__innner{
 
+.swiper-slide {
+  color:#ffffff;
+  width:100%;
+  height:100%;
+  text-align:center;
+  line-height:300px;
+}
+
+.swiper-slide:nth-child(3n+ 1){
+  background-color:#de4439;
+}
+
+.swiper-slide:nth-child(3n+ 2) {
+  background-color: #fcd500;
+}
+
+.swiper-slide:nth-child(3n+ 3) {
+  background-color: #53c638;
+}
+
+ .swiper-pagination{
+  position:absolute;
+  text-align:center;
+  transition:.3s opacity;
+  transform:translate3d(0,0,0);
+  z-index:10;
+}
+
+.swiper-button-prev{
+  position:asolute;
+  top:50%;
+  width:calc(var(--swiper-navigation-size)/ 44 * 27);
+  height:var(--swiper-navigation-size);
+  margin-top:calc(0px - (var(--swiper-navigation-size)/2));
+  z-index:10;
+  cursor:pointer;
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin:0 auto;
-  text-align:center;
-}
-.Ls-test04-sec01__innner p{
-  font-size:50px;
-  text-align:center;
-  color:#fff;
   align-items:center;
+  justify-content:center;
+  color:var(--swiper-navigation-color,var(--swiper-theme-color));
 }
 
+.swiper-button-next{
+  right:10px;
+  left:auto;
+}
 
 /*----------------------------------------------
-Ls-test04-sec02
+Ls-test04-sec02 パンくず
 ------------------------------------------------*/
 
 .Ls-test04-sec02{
-	text-align: left;
 	width: 100%;
 	max-width: 1200px;
-	margin: 0 auto;
-	display: block;
+  margin:0 auto;
 	/* display: inline-block; */
-	padding: 50px 30px 50px 30px;
 }
 
+.Ls-test04-sec02__inner{
+  margin: 0 auto;
+  padding: 40px 30px 40px 30px;
+  text-align: left;
+  display: block;
+}
 
 .Ls-test04-sec02__title{
 	font-size: 38px;
 }
 
-.border{
-	border: 2px solid lightgray;
-	margin: 0 auto;
-	max-width: 400px;
+.Ls-text01-sec02__breadcrumb{
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.sec02_text{
-  font-size: 13px;
-  padding-top: 20px;
+.Ls-test01-sec02__itemListElement{
+  display: inline;
+  list-style: none;
+  font-weight: bold;
 }
+
+.Ls-test01-sec02__itemListElement li{
+  display: inline;
+  list-style: none;
+  font-weight: bold;
+}
+
 /*----------------------------------
-Ls-test04-sec03
+Ls-test04-section03
 ------------------------------------*/
-.Ls-test04-sec03 {
+
+.Ls-test04-section03 {
+  width: 100%;
   max-width: 1300px;
-  background-color: #fff;
-  display: block;
-  margin-bottom: 60px;
+  /* background-color: #fff; */
+  text-align:center;
   margin:0 auto;
 }
-.Ls-test04-sec03__inner{
-  display: flex;
+
+.Ls-test04-section03__inner{
+  display:flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-.Ls-test04-sec03__left_box{
-  max-width: 530px;
-  width: 100%;
-  height: 100%;
-  margin: 0px 5px 0px 5px;
-}
-.Ls-test04-sec03__left_box h2{
-  font-size:40px;
+  margin:0px 20px 0px 20px;
+  text-align:center;
 }
 
-.Ls-test04-sec03__left_box p{
+.Ls-test04-section03__left_box{
+  width:400px;
+}
+.Ls-test04-section03__right_box{
+  text-align:center;
+}
+
+.Ls-test04-section03__right_box img{
+  width:200px;
+  margin-right:30px;
+}
+
+.Ls-test04-section03__left_box h2{
+  font-size:35px;
+}
+
+.Ls-test04-section03__left_box p{
   line-height:30px;
   font-size:15px;
-  padding-top:60px;
-}
-
-.Ls-test04-sec03__right_box {
-
-}
-
-.Ls-test04-sec03__text{
-	text-align: center;
-	margin-top: 10px;
-	margin-bottom: 20px;
+  padding-top:30px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 /*----------------------------------
-Ls-test04-sec04
+Ls-test04-sec04 カード
 ------------------------------------*/
 
 .Ls-test04-sec04 {
   width: 100%;
+  max-width: 1300px;
   background-color: #fff;
   text-align: center;
-  max-width: 1300px;
   align-items: center;
 	margin-bottom:60px;
+  margin:0 auto;
 }
+
 .Ls-test04-sec04__inner{
 	padding:60px 30px 0px 30px;
   display: flex;
@@ -231,35 +376,35 @@ Ls-test04-sec04
 }
 
 .Ls-test04-sec04__card03 {
-    max-width: 250px;
-    width: 100%;
-    background-color: #fff;
-    text-align: center;
-    max-height: 500px;
+  max-width: 250px;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  max-height: 500px;
 }
 
 .Ls-test04-sec04__card03_hibox {
-    height: 200px;
+  height: 200px;
 }
 
 .Ls-test04-sec04__card03_hibox p{
-    font-weight: bold;
-    font-size: 25px;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .Ls-test04-sec04__card03-lowbox p {
-    font-size: 15px;
-    text-align: center;
-    line-height: 30px;
-    margin-top: 0px;
+  font-size: 15px;
+  text-align: center;
+  line-height: 30px;
+  margin-top: 0px;
 }
 
 .Ls-test04-sec04__card04 {
-    max-width: 250px;
-    width: 100%;
-    background-color: #fff;
-    text-align: center;
-    max-height: 500px;
+  max-width: 250px;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  max-height: 500px;
 }
 
 .Ls-test04-sec04__card04_hibox p {
@@ -268,7 +413,7 @@ Ls-test04-sec04
 }
 
 /*----------------------------------
--Ls-test04-sec05
+ Ls-test04-sec05
 ------------------------------------*/
 
 .Ls-test04-sec05{
@@ -291,52 +436,57 @@ Ls-test04-sec04
 	margin:60px 30px 60px 30px;
 }
 
-.Ls-test04-sec05__inner h2{
-  font-size:38px;
+.Ls-test04-sec05 h2{
+  font-size:35px;
   font-weight:100;
+  display:inline-block;
+  border-bottom: solid 2px #57a2c7;
+  font-weight:bold;
+  margin-bottom:40px;
 }
 
 .Ls-test04-sec05__inner p{
-  font-size:38px;
+  font-size:20px;
   font-weight:100;
+  text-align: left;
 }
 
 .Ls-test04-sec05_low{
-	margin-left:130px;
-	margin-right:130px;
+	margin-left:30px;
+	margin-right:30px;
 }
+
 .Ls-test04-sec05_low h2{
   text-align:left;
+  font-size:30px;
+  margin-top:40px;
 }
+
 .Ls-test04-sec05_low p{
   text-align:left;
+  width:100%;
 }
 
-
+/*------------------------------------
+gallery grid
+-----------------------------------*/
 
 /*----------------------------------
-Ls-test-sec07
+Ls-test-sec09
 ------------------------------------*/
-.Ls-test04-sec07{
-	text-align:center;
-	color:red;
-	padding:90px 30px 90px 30px;
-	background-color:#fff;
+.Ls-test-sec09{
+  width:100%;
+  max-width:1300px;
 }
 
-.Ls-test04-sec07 h2{
-  padding:0px 0px 40px 0px;
-}
+/*----------------------------------
+sec6 ギャラリー
+------------------------------------*/
 
-.Ls-test04-sec07__inner{
-
-}
-
-.Ls-test04-sec07__text {
-	text-align: center;
-	color:black;
-	margin-top:30px;
-	margin-bottom:60px;
+.Ls-test04-sec06__inner {
+  margin: 0 auto;
+  text-align: center;
+  margin: 60px 30px 60px 30px;
 }
 
 /*----------------------------------
@@ -345,14 +495,14 @@ Ls-test-sec07
 
 .gallery {
   columns: 3;
-    /*段組みの数*/
+  /*段組みの数*/
   padding: 0 15px;
-    /*ギャラリー左右に余白をつける*/
+  /*ギャラリー左右に余白をつける*/
 }
 
 .gallery li {
-    margin-bottom: 20px;
-    /*各画像下に余白をつける*/
+  margin-bottom: 20px;
+  /*各画像下に余白をつける*/
 }
 
 /*-------------------------------------
@@ -364,173 +514,20 @@ Ls-test-sec07
   height: auto;
   vertical-align: bottom;
     /*画像の下にできる余白を削除*/
-}
+  }
 
-.gallery p{
-	text-align:center;
+  .gallery p{
+    text-align:center;
 }
 
 grid{
 	display:grid;
-	gap:26px;
-	grid-template-columns:reapeat(3 minmax(240px,1fr));
-	margin-top:6%;
-	margin-bottom:50px;
+	gap:30px;
+	grid-template-columns:reapeat(auto-fit, minmax(3oopx,1fr));
+	max-width:1020px;
+  margin:auto;
+  position: relative;
 }
-
-
-/*＝＝＝並び替えボタンのCSS*/
-.sort-btn {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	padding: 50px 20px;
-}
-
-.sort-btn li {
-	background: #eee;
-    border-radius: 10px;
-    cursor: pointer;
-    padding: 10px;
-    margin: 0 10px;
-	}
-
-	.sort-btn li.active {
-		/*ボタンに現在地＝activeというクラス名がついたら背景色を変更*/
-    background: #ccc;
-}
-
-
-/*＝＝＝Muuriのレイアウトのための調整 */
-.grid {
-    position: relative;
-    /*並び替えの基準点を指定*/
-	}
-
-/*各画像の横幅などの設定*/
-.item {
-    display: block;
-    position: absolute;
-    width: 33%;
-    /*横並びで3つ表示*/
-    z-index: 1;
-	}
-
-	/*内側のボックスの高さが崩れないように維持*/
-	.item-content {
-		position: relative;
-    width: 100%;
-    height: 100%;
-	}
-
-	/*画像の横幅を100%にしてレスポンシブ化*/
-	.grid img {
-		width: 100%;
-    height: auto;
-    vertical-align: bottom;
-    /*画像の下にできる余白を削除*/
-}
-
-
-
-/*＝＝＝fancyboxサムネイル背景と画像選択時の枠線の指定*/
-.fancybox-thumbs {
-    background: transparent !important;
-}
-
-.fancybox-thumbs__list a:before {
-	border: 6px solid #FA999B;
-}
-
-/*========= レイアウトのためのCSS ===============*/
-ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-a {
-    color: #333;
-}
-
-a:hover,
-a:active {
-    text-decoration: none;
-}
-
-h1 {
-    text-align: center;
-    font-size: 6vw;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 30px 0;
-	}
-
-	p {
-    margin: 0 10px 10px 10px;
-    word-wrap: break-word;
-	}
-
-/*横幅が810px以下になった際の指定*/
-@media only screen and (max-width: 810px) {
-    .sort-btn li {
-        width: 100%;
-        margin: 0;
-    }
-    .sort-btn ul li {
-        width: auto;
-    }
-	}
-
-/*チェックマークの設定*/
-.sort-btn ul li::before {
-	content: '';
-	position: absolute;
-	left: 0;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-	}
-
-	.sort-btn ul li.active::after {
-		/*現在地＝activeというクラス名がついたらチェックマークを出現*/
-    content: '';
-    position: absolute;
-    left: 5px;
-    top: 0;
-    /*チェックマークの色や形*/
-    border-left: 2px solid #333;
-    border-bottom: 2px solid #333;
-    width: 16px;
-    height: 9px;
-    transform: rotate(-45deg);
-	}
-
-
-
-	/*＝＝＝Muuriのレイアウトのための調整 */
-	.grid {
-		position: relative;
-    /*並び替えの基準点を指定*/
-	}
-
-	/*各画像の横幅などの設定*/
-	.item {
-		display: block;
-    position: absolute;
-    width: 33%;
-    /*横並びで3つ表示*/
-    padding: 0 10px 10px 10px;
-    /*画像に余白をつける*/
-    z-index: 1;
-	}
-
-/*内側のボックスの高さが崩れないように維持*/
-.item-content {
-	position: relative;
-    width: 100%;
-    height: 100%;
-	}
 
 /*画像の横幅を100%にしてレスポンシブ化*/
 .grid img {
@@ -540,64 +537,87 @@ h1 {
   /*画像の下にできる余白を削除*/
 }
 
-/*横幅が768px以下になった際の指定*/
-@media only screen and (max-width: 768px) {
+/*各画像の横幅などの設定*/
 .item {
-  width: 49.5%;
-  /*横並びで2つ表示*/
-  padding: 0 5px 10px 5px;
-	}
+  display: block;
+  position: absolute;
+  width: 33%;
+  /*横並びで3つ表示*/
+  z-index: 1;
 }
 
-
-/*========= レイアウトのためのCSS ===============*/
-ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+/*内側のボックスの高さが崩れないように維持*/
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-a {
-  color: #333;
+/*----------------------------------
+Ls-test-sec07
+------------------------------------*/
+
+.Ls-test04-sec07{
+  width:100%;
+  max-width:1300px;
+  margin:0 auto;
 }
 
-a:hover,
-a:active {
-  text-decoration: none;
-}
-
-h1 {
+.Ls-test04-sec07__inner{
   text-align: center;
-  font-size: 6vw;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin: 30px 0;
+  color: red;
+  padding: 60px 30px 40px 30px;
+  background-color: #fff;
 }
 
-p {
-  margin: 0 10px 10px 10px;
-  word-wrap: break-word;
+.Ls-test04-sec07 h2{
+  padding:0px 0px 40px 0px;
+  border-bottom:solid 2px #57a2c7;
+  display:inline-block;
+  font-size:35px;
 }
 
+.Ls-test04-sec07__text {
+  text-align: center;
+  color:black;
+  margin-top:30px;
+  margin-bottom:60px;
+}
+
+/*------------------------------------------
+メディアクエリー（レスポンシブ)
+------------------------------------------*/
 
 .Ls-test04-sec09 {
-  max-width: 1200px;
   width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 }
+
+.Ls-test04-sec09__inner{
+  margin:0 auto;
+  text-align:center;
+  margin:60px 30px 60px 30px;
+}
+
 .Ls-test04-sec09 h2 {
   font-family: メイリオ,sans-serif,Meiryo;
   font-weight: bold;
-  padding-left: 0px;
-  font-size: 30px;
+  font-size: 35px;
+  border-bottom:solid 2px #57a2c7;
+  display:inline-block;
+  margin:0 auto;
+  text-align:center;
+  color: red;
 }
-.Ls-parent{
-	text-align:center;
-	color:red;
+
+.Ls-test04-sec09 p{
+  font-size:40px;
+  text-align:left;
 }
 
 /*----------------------------------------
--Ls-test04-sec10-
+-Ls-test04-sec10
 -----------------------------------------*/
 
 .Ls-test04-sec10 {
@@ -611,7 +631,7 @@ p {
 }
 
 /*----------------------------------------
-Ls-test04-sec10-
+Ls-test04-sec11 矢印
 -----------------------------------------*/
 
 .Ls-test04-sec11 {
@@ -626,44 +646,137 @@ Ls-test04-sec10-
   padding-bottom: 60px;
 }
 
-.Ls-test04-sec11__btn {
-  border: none;
-  display: inline-block;
-  font-size: 15px;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  width: 250px;
-  background-color: #ffa200;
-  border-radius: 10px;
-  text-decoration: none;
-  padding-top: 5px;
-  padding-bottom: 5px;
+.Ls-test04-sec11 ul{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #ffffff;
 }
 
-.Ls-test04-sec11__btn {
-  border: none;
-  display: inline-block;
-  font-size: 15px;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  width: 250px;
-  background-color: #ffa200;
-  border-radius: 10px;
-  text-decoration: none;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-
-.Ls-test04-sec11__btn a {
-  color: #fff;
-  text-decoration: none;
+.Ls-test04-sec11 li{
+  padding-left: 5px;
 }
 
 .dev-container{
 	list-style:none;
+}
+
+.inner{
+  margin-right: 10px;
+}
+
+.card1.text_title {
+  font-size: 15px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #005cad;
+  color: #fff;
+  clip-path: polygon(92% 0, 100% 50%, 93% 100%, 0% 100%, 7% 50%, 0% 0%);
+}
+
+.card1.text_text1 {
+  font-size: 13px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 5px 40px 5px 40px;
+  border: 1px solid #005cad
+}
+
+.card1.text_text {
+  margin-left: 10px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  text-align: center;
+  padding: 5px 20px 5px 20px;
+  border: 1px solid #005cad
+}
+
+.card2.text_title {
+  font-size: 15px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #005cad;
+  color: #fff;
+  clip-path: polygon(92% 0, 100% 50%, 93% 100%, 0% 100%, 7% 50%, 0% 0%);
+}
+
+.card2.text_text1 {
+  font-size: 13px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 5px 40px 5px 40px;
+  border: 1px solid #005cad
+}
+
+.card2.text_text {
+  margin-left: 10px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  text-align: center;
+  padding: 5px 20px 5px 20px;
+  border: 1px solid #005cad
+}
+
+.card3.text_title {
+  font-size: 15px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #005cad;
+  color: #fff;
+  clip-path: polygon(92% 0, 100% 50%, 93% 100%, 0% 100%, 7% 50%, 0% 0%);
+}
+
+.card3.text_text1 {
+  font-size: 13px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 5px 40px 5px 40px;
+  border: 1px solid #005cad
+}
+
+.card3.text_text {
+  /* margin-left: 10px; */
+  font-size: 13px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  text-align: center;
+  padding: 5px 20px 5px 20px;
+  border: 1px solid #005cad;
+
+}
+
+.card4 .text_title{
+  font-size: 15px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #005cad;
+  color: #fff;
+  clip-path: polygon(92% 0, 100% 50%, 93% 100%, 0% 100%, 7% 50%, 0% 0%);
+}
+
+.card4 .text_text1{
+  font-size: 13px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 5px 40px 5px 40px;
+  border: 1px solid #005cad
+}
+
+.card4 .text_text{
+  margin-left: 10px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  text-align: center;
+  padding: 5px 20px 5px 20px;
+  border: 1px solid #005cad
 }
 
 /*----------------------------------
@@ -672,29 +785,39 @@ Ls-test04-sec12
 .Ls-test04-sec12{
   width:1300px;
   width:100%;
-  background-color:light-gray;
-  padding:60px 30px 60px 30px;
-}
-.Ls-test04-sec12 h2{
-  margin:0 auto;
-  text-align:center;
-  padding:60px 30px 60px 30px;
-}
-.Ls-test04-sec12 p{
-  display:block;
-  text-align:center;
-  padding:60px 30px 60px 30px;
 }
 
 .Ls-test04-sec12__inner{
   display:block;
   align-items:center;
   margin:0 auto;
+  text-align:center;
+  padding: 60px 30px 60px 30px;
+  background-color: light-gray;
+}
 
+.Ls-test04-sec12 h2{
+  margin:0 auto;
+  text-align:center;
+  padding:60px 30px 30px 30px;
+  border-bottom:solid 2px #57a2c7;
+  display:inline-block;
+  font-size:25px;
+}
+
+.Ls-test04-sec12 p{
+  display:block;
+  text-align:left;
+  margin:40px 30px 60px 30px;
+}
+.devdev__container{
+  max-width:1200px;
+  width:100%;
+  margin:0 auto;
 }
 
 /*----------------------------------
-footer
+footer フッター
 ------------------------------------*/
 
 .footer {
@@ -713,32 +836,34 @@ footer
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
 }
 
 /*運営情報*/
 .footer-prof {
   padding-top: 30px;
   padding-bottom: 40px;
+  width:50%;
+}
+.Ls-footer__address{
+  margin:0px 20px 0px 20px;
 }
 
+.footer-prof__r{
+  width:50%;
+}
+
+.footer img{
+  width:200px;
+}
 .footer-prof .logo {
-  width: 250px;
-}
-
-.footer-prof .add {
-  margin-top: 30px;
-}
-
-.footer-prof .sns {
-  margin-top: 30px;
-  /* display: flex; */
-}
-
-.footer-prof .sns li {
-  margin-right: 15px;
+  width: 200px;
 }
 
 /*メインメニュー*/
+
 .footer-link_01 {
   margin-left: -20px;
   margin-right: -20px;
@@ -796,18 +921,39 @@ footer
 .footer-link_02 a:hover {
 	color: #ffffff;
   text-decoration: underline;
+
 }
 
 /*コピーライト*/
-.footer-copyright {
-	padding: 10px 20px;
-  background: #000;
+.footer__copyright p {
+	margin: 0 auto;
+  background: #707070;
   text-align: center;
-  font-size: calc((12 / 16)*1em);
+  /* font-size: calc((12 / 16)*1em); */
+  max-width: 1500px;
+  width:100%;
+  display:inline-block;
 }
 
-/*ページトップ*/
-.footer-pagetop {
+.footer__copyright{
+  width:100%;
+  max-width:1300px;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  margin:0 auto;
+}
+
+#page-top{
+  position:fixed;
+  right:0;
+  bottom:0;
+}
+/*-------------------------
+ページトップ(戻るボタン)
+--------------------------*/
+
+/* .footer-pagetop {
 	position: absolute;
   right: 0;
   top: -61px;
@@ -838,31 +984,10 @@ footer
   border-top: 2px solid;
   border-right: 2px solid;
   transform: translate(-50%, -25%) rotate(-45deg);
-}
-
-/*----------------------------------------
-ページトップのためのCSS
------------------------------------------*/
-
-#page-top a{
-	background:#942D2F;
-	color:#fff;
-	text-align: center;
-	display: block;
-	text-decoration: none;
-	padding:20px;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	font-size: 0.8rem;
-	transition: all 0.3s;
-}
-
-#page-top a:hover{
-	background: #777;
-}
+} */
 
 /*------------------------------------
-Page-top
+Page-top 8-1-2
 --------------------------------------*/
 
 #page-top a{
@@ -874,7 +999,7 @@ Page-top
   width:60px;
   height:60px;
   color:#fff;
-  text-align:center;
+  text-align:right;
   text-transform:uppercase;
   text-decoration:none;
   font-size:0.6rem;
@@ -907,4 +1032,57 @@ Page-top
 		width: 49.5%;
 		/*横並びで2つ表示*/
 	}
+}
+
+/*横幅が810px以下になった際の指定*/
+@media only screen and (max-width: 810px) {
+  .sort-btn li {
+    width: 100%;
+    margin: 0;
+  }
+
+  .sort-btn ul li {
+    width: auto;
+  }
+}
+
+/*＝＝＝Muuriのレイアウトのための調整 */
+.grid {
+  position: relative;
+  /*並び替えの基準点を指定*/
+}
+
+/*各画像の横幅などの設定*/
+.item {
+  display: block;
+  position: absolute;
+  width: 33%;
+  /*横並びで3つ表示*/
+  padding: 0 10px 10px 10px;
+  /*画像に余白をつける*/
+  z-index: 1;
+}
+
+/*内側のボックスの高さが崩れないように維持*/
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/*画像の横幅を100%にしてレスポンシブ化*/
+.grid img {
+  width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  /*画像の下にできる余白を削除*/
+}
+
+/*横幅が768px以下になった際の指定*/
+@media only screen and (max-width: 768px) {
+  .item {
+    width: 49.5%;
+    /*横並びで2つ表示*/
+    padding: 0 5px 10px 5px;
+  }
 }

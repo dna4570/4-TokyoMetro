@@ -1,6 +1,6 @@
 <script>
 	var swiper = new Swiper('.swiper-container._top',{
-		loop: true,
+		{ loop: true,
 		effect:'fade',
 		fadeEffect: {
 			crossFade: true
